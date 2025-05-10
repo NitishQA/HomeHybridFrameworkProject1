@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TutorialsNinjaAutomationSuite1">
+	<listeners>
+		<listener class-name="com.lms.qa.listeners.MyListeners"></listener>
+	</listeners>
+	<test name="TutorialsNinja TestCases">
+		<classes>
+			<class name="com.lms.qa.testcases.LandingPageTest" />
+	   <!-- <class name="com.lms.qa.testcases.LoginPageTest" /> It is used for commenting in xml file -->
+		</classes>
+	</test> <!-- TutorialsNinja TestCases -->
+</suite> <!-- TutorialsNinjaAutomationSuite1 -->
