@@ -106,8 +106,8 @@ public class LoginPageTest extends BaseClass  //Now LoginPage can use the method
 //		driver.get("https://tutorialsninja.com/demo/");
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Login")).click();
-		driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(conProp.getProperty("validUsername"));
-		driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(conProp.getProperty("validpassword"));
+		driver.findElement(By.xpath("//input[@id='input-email']")).sendKeys(testdataProp.getProperty("validUsername"));
+		driver.findElement(By.xpath("//input[@id='input-password']")).sendKeys(testdataProp.getProperty("validpassword"));
 		driver.findElement(By.xpath("//input[@value='Login']")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
 		
@@ -158,6 +158,21 @@ public class LoginPageTest extends BaseClass  //Now LoginPage can use the method
 //		String expectedWarningMessage = "Warning: No match for E-Mail Address and/or Password.";
 		String expectedWarningMessage = login_Page_ElementsObj.expectedWarning_Message();
 //		Assert.assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Warning: No match for E-Mail Address')]")).isDisplayed());
+		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage), "Error message is wrong" );
+		
+	}
+	
+	@Test (priority = 1)
+	public void Verify_LoginWith_InValidpassword() throws InterruptedException
+	{
+		LoginPageElements login_Page_ElementsObj = new LoginPageElements(driver);
+		login_Page_ElementsObj.click_MyAccount();
+		login_Page_ElementsObj.click_login_Text();
+		login_Page_ElementsObj.enter_email(testdataProp.getProperty("validUsername"));
+		login_Page_ElementsObj.enter_password(testdataProp.getProperty("invalidpassword"));
+		login_Page_ElementsObj.click_on_LoginInButton();
+		String actualWarningMessage = login_Page_ElementsObj.get_Actualwarningmessage();
+		String expectedWarningMessage = login_Page_ElementsObj.expectedWarning_Message();
 		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage), "Error message is wrong" );
 		
 	}
