@@ -15,6 +15,7 @@ public class BaseClass
 {
 	public WebDriver driver;
 	public Properties conProp;
+	public Properties testdataProp;
 	
 //	public void loadPropertiesFile() // either create in this way or create constructor public BaseClass()
 	public BaseClass()
@@ -25,6 +26,19 @@ public class BaseClass
 		{
 		FileInputStream conFis = new FileInputStream(conPropFile);
 		conProp.load(conFis);
+		}
+		catch(Throwable e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		testdataProp = new Properties();
+		File testdataFile = new File(System.getProperty("user.dir")+"\\src\\test\\java\\com\\lms\\qa\\testdata\\testdata.properties");
+		try
+		{
+		FileInputStream testdataFis = new FileInputStream(testdataFile);
+		testdataProp.load(testdataFis);
 		}
 		catch(Throwable e)
 		{

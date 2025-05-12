@@ -66,7 +66,7 @@ public class LandingPageTest extends BaseClass
 	public void verifySearch_withValidProducts()
 	{
 		LandingPageWebelements LandingPageWebelements_Obj = new LandingPageWebelements(driver);
-		LandingPageWebelements_Obj.enterInValidSearch(conProp.getProperty("validProductname"));
+		LandingPageWebelements_Obj.enterInValidSearch(testdataProp.getProperty("validProductname"));
 		LandingPageWebelements_Obj.click_on_searchbutton();
 		System.out.println("Valid text is " +LandingPageWebelements_Obj.actual_ValidSearchText());
 		Assert.assertTrue((LandingPageWebelements_Obj.actual_ValidSearchText()).contains(LandingPageWebelements_Obj.expected_ValidSearchText()), "Error message is wrong");
@@ -77,7 +77,7 @@ public class LandingPageTest extends BaseClass
 	public void verifySearch_withInValidProducts()
 	{
 		LandingPageWebelements LandingPageWebelements_Obj = new LandingPageWebelements(driver);
-		LandingPageWebelements_Obj.enterInValidSearch(conProp.getProperty("invalidProductname"));
+		LandingPageWebelements_Obj.enterInValidSearch(testdataProp.getProperty("invalidProductname"));
 		LandingPageWebelements_Obj.click_on_searchbutton();
 		String actualInvalidProductText = LandingPageWebelements_Obj.actualinvalidProductText();
 		String expectedInvalidTextMessage = LandingPageWebelements_Obj.expectedinvalidSearchText();
